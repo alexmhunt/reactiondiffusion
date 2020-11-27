@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="942de3c5-8a8b-4e14-850f-553ca92bd4fa" name="Default Changelist" comment="" />
+    <list default="true" id="942de3c5-8a8b-4e14-850f-553ca92bd4fa" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -11,10 +14,15 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1kkaTeTLxjrzKAOOJ1o5A0lCan5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -33,11 +41,18 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606247051855</updated>
-      <workItem from="1606247052984" duration="1458000" />
+      <workItem from="1606247052984" duration="1741000" />
+      <workItem from="1606443876023" duration="1532000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="531" y="219" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606249481408">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="531" y="219" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.834@0.0.1536.834" timestamp="1606249481408" />
   </component>
 </project>
