@@ -103,7 +103,14 @@
 </script>
 <script src="https://cdn.jsdelivr.net/npm/tweakpane@1.5.7/dist/tweakpane.min.js"></script>
 <script>
-    let pingpongs = 12;
+    const params = {
+        speed:12,
+        color: {r: 255, g: 127, b: 0},
+        f:0.0457,
+        k:0.0635,
+        dA:1.0,
+        dB:0.5,
+    }
     window.onload = function() {
         let canvas = document.querySelector( 'canvas' )
         canvas.width = window.innerWidth
@@ -255,14 +262,7 @@
 
         const pane = new Tweakpane();
 
-        const params = {
-            speed:12,
-            color: {r: 255, g: 127, b: 0},
-            f:0.0457,
-            k:0.0635,
-            dA:1.0,
-            dB:0.5,
-        }
+
 
         pane.addInput(params, 'speed', {
             step: 1,
