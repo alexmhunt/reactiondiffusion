@@ -41,14 +41,25 @@
   precision mediump float;
   uniform sampler2D state;
   uniform vec2 scale;
+  uniform float f;
+  //uniform float k;
+
+  float k = .0635;
+  //uniform float dA;
+  //uniform float dB;
+  float dA = 1.;
+  float dB = 0.5;
   //float f=.0545, k=.062, dA = 1., dB = 0.; // coral preset
-  float f = .0457, k = .0635, dA = 1., dB = .5;
+  //float f = .0457, k = .0635, dA = 1., dB = .5;
+
+
 
   vec2 get(int x, int y) {
     return texture2D( state, ( gl_FragCoord.xy + vec2(x, y) ) / scale ).rg;
   }
 
   vec2 run() {
+
     vec2 state = get( 0, 0 );
     float a = state.r;
     float b = state.g;
@@ -90,7 +101,7 @@
     gl_FragColor = vec4( nextState.r, nextState.g, 0., 1. );
   }
 </script>
-
+<script src="https://cdn.jsdelivr.net/npm/tweakpane@1.5.7/dist/tweakpane.min.js"></script>
 <script>
     let pingpongs = 12;
     window.onload = function() {
@@ -245,33 +256,71 @@
         const pane = new Tweakpane();
 
         const params = {
-            pingpongs:12,
+            speed:12,
             color: {r: 255, g: 127, b: 0},
+            f:0.0457,
+            k:0.0635,
+            dA:1.0,
+            dB:0.5,
         }
 
-        pane.addInput(params, 'pingpongs', {
+        pane.addInput(params, 'speed', {
             step: 1,
             min: 0,
-            max: 50,
+            max: 50
         })
-        pane.addInput(params, 'color')
+        //pane.addInput(params, 'color')
+        pane.addInput(params,'f', {
+            step: 0.0001,
+            min: 0.02,
+            max: 0.07
+        });
+        pane.addInput(params,'k',{
+            step: 0.0001,
+            min: 0.02,
+            max: 0.07
+        });
+        pane.addInput(params,'dA',{
+            step: 0.01,
+            min: 0.0,
+            max: 1.0
+        });
+        pane.addInput(params,'dB',{
+            step: 0.01,
+            min: 0.0,
+            max: 1.0
+        });
+
+
 
         // GUI stuff ends
 
         const draw = function() {
             gl.useProgram( programRender )
-            for( let i = 0; i < params.pingpongs; i++ ) pingpong()
+            for( let i = 0; i < params.speed; i++ ) pingpong()
 
             // use the default framebuffer object by passing null
             gl.bindFramebuffer( gl.FRAMEBUFFER, null )
+
+            let fLoc = gl.getUniformLocation(programRender,'f');
+            gl.uniform1f(fLoc, params.f);
+            let kLoc = gl.getUniformLocation(programRender,'k');
+            gl.uniform1f(kLoc, params.k);
+            let dALoc = gl.getUniformLocation(programRender,'dA');
+            gl.uniform1f(dALoc, params.dA);
+            let dBLoc = gl.getUniformLocation(programRender,'dB');
+            gl.uniform1f(dBLoc, params.dB);
 
             // set our viewport to be the size of our canvas
             // so that it will fill it entirely
             gl.viewport(0, 0, canvas.width, canvas.height )
             // select the texture we would like to draw the the screen.
             gl.bindTexture( gl.TEXTURE_2D, texBack )
+
+
             // use our drawing (copy) shader
             gl.useProgram( programDraw )
+
 
             gl.uniform1f(rColor, params.color.r)
             // put simulation on screen
@@ -285,5 +334,5 @@
 
     }
 </script>
-<script src="https://cdn.jsdelivr.net/npm/tweakpane@1.5.7/dist/tweakpane.min.js"></script>
+
 </html>
